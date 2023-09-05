@@ -1,0 +1,1 @@
+# A template with Vite | React + TS | linter rules
