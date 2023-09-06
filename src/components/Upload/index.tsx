@@ -1,14 +1,17 @@
-import { useCallback, useState } from 'react';
-import { useDropzone, FileWithPath } from 'react-dropzone';
+import { useCallback, useContext } from 'react';
+import { useDropzone } from 'react-dropzone';
 import { AiOutlineFileSearch } from 'react-icons/ai';
+
+import context from 'src/context/context';
 
 import style from './style.module.css';
 
 export default function Upload() {
-  const [file, setFile] = useState<FileWithPath | undefined>(undefined);
+  const { file, setFile } = useContext(context);
 
   const onDrop = useCallback((acceptedFiles: any) => {
     setFile(acceptedFiles[0]);
+    
   }, []);
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
