@@ -1,0 +1,25 @@
+.upload__container {
+  border: 1px solid gray;
+  width: 500px;
+  height: 40px;
+  padding: 4px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.upload__container::after {
+  content: '';
+  top: 0;
+  right: 40px;
+  width: 1px;
+  height: 100%;
+  background-color: gray;
+  position: absolute;
+}
+
+.upload__container__icon {
+  font-size: 2rem;
+}
