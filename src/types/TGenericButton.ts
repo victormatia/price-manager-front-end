@@ -6,6 +6,7 @@ type TGenericButton = {
   icon?: ReactNode,
   action: (params: unknown) => unknown,
   isDisabled: boolean,
+  style: any
 }
 
 export default TGenericButton;
