@@ -7,9 +7,10 @@ import context from 'src/context/context';
 import style from './style.module.css';
 
 export default function Upload() {
-  const { file, setFile } = useContext(context);
+  const { file, setFile, setErrorList } = useContext(context);
 
   const onDrop = useCallback((acceptedFiles: any) => {
+    setErrorList([]);
     setFile(acceptedFiles[0]);
     
   }, []);
