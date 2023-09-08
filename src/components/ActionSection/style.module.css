@@ -1,0 +1,32 @@
+.actions-container {
+  /* border: 2px solid red; */
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  justify-content: space-around;
+}
+
+.actions-container__validate-button, .actions-container__update-button {
+  width: 200px;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: rgb(234, 234, 234);
+  border: 1px solid rgb(205, 205, 205);
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.actions-container__validate-button:hover {
+  color: rgb(234, 234, 234);
+  background-color: rgb(37, 37, 37);
+  border: 1px solid rgb(48, 48, 48);
+}
+
+.actions-container__update-button:enabled:hover {
+  color: rgb(234, 234, 234);
+  background-color: rgb(92, 164, 90);
+  border: 1px solid rgb(92, 164, 90);
+}
