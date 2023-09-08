@@ -12,17 +12,21 @@ export default function ActionSection() {
   const { file, setErrorList, isUpdateEnabled, setIsUpdateEnabled } = useContext(context);
 
   const onSubmit = async () => {
-    const data = new FormData();
+    const csvData = new FormData();
 
-    data.append('file', file as Blob);
+    csvData.append('file', file as Blob);
 
-    const areInvalidPrices = await requestFunction(VALIDATE_URL, data);
+    const { message, data } = await requestFunction(VALIDATE_URL, csvData);
 
-    areInvalidPrices.forEach((e: any) => {
+    if(message) {
+      return setErrorList([{ isValid: false, message, productCode: 0 }]);
+    }
+
+    data.forEach((e: any) => {
       if (!e.isValid) setErrorList((prev) => [...prev, e]);
     });
 
-    setIsUpdateEnabled(areInvalidPrices.every((e: any) => e.isValid));
+    setIsUpdateEnabled(data.every((e: any) => e.isValid));
   };
   
   return (
