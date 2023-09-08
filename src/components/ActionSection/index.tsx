@@ -5,12 +5,13 @@ import * as requestFunction from '@/utils/resquestFunctions';
 import context from 'src/context/context';
 
 import Button from '../Button';
+import style from './style.module.css';
 
 const VALIDATE_URL = 'http://localhost:3001/validate';
 const UPDATE_URL = 'http://localhost:3001/update';
 
 export default function ActionSection() {
-  const { file, setErrorList, isUpdateEnabled, setIsUpdateEnabled } = useContext(context);
+  const { file, setErrorList, isUpdateEnabled, setIsUpdateEnabled, setUpdatesProducts } = useContext(context);
 
   const onSubmit = async () => {
     const csvData = new FormData();
@@ -32,13 +33,27 @@ export default function ActionSection() {
 
   const update = async () => {
     const { message, data } = await requestFunction.update(UPDATE_URL, {});
-    console.log(data, message);
+
+    if (message) return setErrorList([{ isValid: false, message, productCode: 0 }]);
+
+    setUpdatesProducts(data);
   };
   
   return (
-    <section>
-      <Button title='Validar' type='button' action={ onSubmit } isDisabled={ false } />
-      <Button title='Atualizar' type='button' action={ update } isDisabled={ !isUpdateEnabled } />
+    <section className={ style['actions-container'] }>
+      <Button
+        title='Validar'
+        type='button'
+        action={ onSubmit }
+        isDisabled={ false }
+        style={ style['actions-container__validate-button']}
+      />
+      <Button
+        title='Atualizar'
+        type='button'
+        action={ update }
+        isDisabled={ !isUpdateEnabled }
+        style={ style['actions-container__update-button']} />
     </section>
   );
 }
