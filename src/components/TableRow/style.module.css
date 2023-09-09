@@ -1,0 +1,7 @@
+.row {
+  background-color: rgb(225, 225, 225);
+}
+
+.row td {
+  text-align: center;
+}
