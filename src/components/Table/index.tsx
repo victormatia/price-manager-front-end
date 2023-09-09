@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import context from 'src/context/context';
 
 import TableRow from '../TableRow';
+import style from './styles.module.css';
 
 export default function Table() {
   const { updatedProducts } = useContext(context);
@@ -10,8 +11,8 @@ export default function Table() {
     <>
       {
         !!updatedProducts.length && (
-          <table>
-            <thead>
+          <table className={ style['table'] }>
+            <thead className={ style['table__header'] }>
               <th>Product Code</th>
               <th>Product Name</th>
               <th>Cost Price</th>
