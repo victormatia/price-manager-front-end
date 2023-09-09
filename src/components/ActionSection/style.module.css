@@ -6,6 +6,7 @@
   align-items: center;
   margin: 20px 0;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .actions-container__validate-button, .actions-container__update-button {
@@ -29,4 +30,26 @@
   color: rgb(234, 234, 234);
   background-color: rgb(92, 164, 90);
   border: 1px solid rgb(92, 164, 90);
+}
+
+.actions-container__update-button:disabled {
+  cursor: not-allowed;
+}
+
+.actions-container__update-button:enabled {
+  color: rgb(92, 164, 90);
+  background-color: rgb(234, 234, 234);
+  border: 1px solid rgb(92, 164, 90);
+}
+
+@media screen and ( max-width: 500px ) {
+  .actions-container {
+    height: 140px;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .actions-container__validate-button, .actions-container__update-button {
+    width: 100%;
+  }
 }
