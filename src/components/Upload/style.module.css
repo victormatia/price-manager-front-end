@@ -1,7 +1,7 @@
 .upload__container {
   margin: 20px 0;
   border: 1px dashed gray;
-  width: 500px;
+  width: 80%;
   height: 120px;
   padding: 4px;
   position: relative;
@@ -33,7 +33,7 @@
   font-size: 2rem;
 }
 
-@media screen and ( max-width: 850px ) {
+@media screen and ( max-width: 700px ) {
   .upload__container {
     width: 100%;
   }
