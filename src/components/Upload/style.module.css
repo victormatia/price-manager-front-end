@@ -1,0 +1,40 @@
+.upload__container {
+  margin: 20px 0;
+  border: 1px dashed gray;
+  width: 80%;
+  height: 120px;
+  padding: 4px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  cursor: pointer;
+  color: rgb(157, 157, 157);
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.upload__container:hover {
+  color: rgb(59, 59, 59);
+}
+
+/* .upload__container::after {
+  content: '';
+  top: 0;
+  right: 40px;
+  width: 1px;
+  height: 100%;
+  background-color: gray;
+  position: absolute;
+} */
+
+.upload__container__icon {
+  font-size: 2rem;
+}
+
+@media screen and ( max-width: 700px ) {
+  .upload__container {
+    width: 100%;
+  }
+}
