@@ -11,7 +11,7 @@ const VALIDATE_URL = 'http://localhost:3001/validate';
 const UPDATE_URL = 'http://localhost:3001/update';
 
 export default function ActionSection() {
-  const { file, setErrorList, isUpdateEnabled, setIsUpdateEnabled, setUpdatesProducts } = useContext(context);
+  const { file, setErrorList, isUpdateEnabled, setIsUpdateEnabled, setUpdatesProducts, setFile } = useContext(context);
 
   const onSubmit = async () => {
     const csvData = new FormData();
@@ -37,6 +37,7 @@ export default function ActionSection() {
     if (message) return setErrorList([{ isValid: false, message, productCode: 0 }]);
 
     setUpdatesProducts(data);
+    setFile(null);
   };
   
   return (
