@@ -29,7 +29,7 @@ touch docker-compose.yml
 
 ### 3. Abra o arquivo e cole o seguinte código dentro:
 
-  ```docker
+```yml
 version: '3'
 
 services:
@@ -42,49 +42,53 @@ services:
     ports:
       - "3000:3000"
     working_dir: /price-manager-front-end
-    volumes: 
-      - ./price-manager-front-end:/price-manager-front-end
+    # volumes: 
+    #   - ./price-manager-front-end:/price-manager-front-end
     networks:
       - price-manager-net
     depends_on:
       - backend
-      
+    restart: always
+    
   backend:
     container_name: price-manager-back-end
     build: ./price-manager-back-end
-    # # tty ativa a flag -t
     # tty: true
-    # # stdin_open ativa a flag -i
     # stdin_open: true
     # command: bash
     ports:
       - "3001:3001"
       - "5555:5555"
     working_dir: /price-manager-back-end
-    volumes:
-      - ./price-manager-back-end:/price-manager-back-end
+    # volumes:
+    #   - ./price-manager-back-end:/price-manager-back-end
     depends_on:
       - db
     networks:
       - price-manager-net
     environment:
       - "mysql://root:password@db:3306/price_manager_db"
-  
+    restart: always
+
   db:
-    container_name: home-db
+    container_name: price-manager-db
     image: mysql:8.1.0
     environment:
-      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_ROOT_PASSWORD=password
     ports:
       - "3306:3306"
     networks:
       - price-manager-net
+    restart: always
     # volumes:
     #   - ./home-app-backend/db:/db
-  
+
 networks:
   price-manager-net:
     driver: bridge
+
+
+
 ```
 ### 4. Agora clone o reporitório do **front-end**:
 
@@ -102,4 +106,12 @@ git clone git@github.com:victormatia/price-manager-back-end.git
 
 ```bash
 docker compose up -d
+```
+
+### 7. Execute o arquivo /price-manager-back-end/database.sql para criar a estrutura e popular o banco de dados
+
+### 8. Por último, atualize o back end, para ele receber as novas modificações no banco de dados, com o comando:
+
+```bash
+docker exec -it price-manager-back-end npx prisma generate
 ```
