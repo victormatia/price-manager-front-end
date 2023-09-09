@@ -8,6 +8,10 @@ O Gerenciador de Preços é uma aplicação web que facilita a atualização e g
 
 - **Atualização de Preços em Lote**: O aplicativo processa o arquivo CSV e atualiza os preços dos produtos em lote, economizando tempo e reduzindo erros manuais.
 
+## Capturas de tela
+
+<img src='./assets/preview.gif'/>
+
 ## Pré-requisitos
 
 Antes de começar, certifique-se de ter o seguinte instalado em seu sistema:
