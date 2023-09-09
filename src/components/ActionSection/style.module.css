@@ -1,10 +1,9 @@
 .actions-container {
-  /* border: 2px solid red; */
   padding: 5px;
   width: 100%;
   display: flex;
   align-items: center;
-  margin: 20px 0;
+  margin-bottom: 20px;
   justify-content: space-around;
   flex-wrap: wrap;
 }
